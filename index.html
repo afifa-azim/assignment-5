@@ -3,9 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DevBoard</title>
+    
 </head>
 <body>
-    
+    <div class="container">
+        <div class="main-content">
+            <div class="header">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Logo">
+                    <span style="color: black; font-weight: bold;">Dev Board</span>
+                </div>
+                <div class="theme-button" onclick="changeTheme()">
+                    <img src="assets/theme-btn.png" alt="Theme Button">
+                </div>
+            </div>
+            <!-- 2nd part -->
+               <div>
+            <div class="task-info">
+                <div class="task-count-box">
+                    <img src="assets/checkbox.png" alt="">
+                     <div>Task Assigned</div>
+                    <div><strong id="task-count">6</strong></div>
+                </div>
+            <div class="highlight-box" onclick="openblogsPage()">
+                <img class="highlight-img" src="assets/board.png" alt="">Discover Something New Today!</div>
+
+                <div class="box">
+                   <img src="assets/calender.png" alt="">
+                    <div>Wed,</div>
+                    <div class="task-number">Jul 28 2025</div>
+                </div>
+            </div> 
+           </div>
+<!-- 3rd part -->
+        <div class="task-box" id="taskBox"></div>
+    </div>
+    <div class="sidebar">
+        <div class="activity-log">
+            <h3>Activity Log</h3>
+            <div id="log-content"></div>
+            <button onclick="clearActivityLog()">Clear History</button>
+        </div>
+    </div>
+</div>
+<script>
+    //complete section part
+    let taskCount = 6;
+    const tasks = [
+        { company: "Shop Ease", title: "Fix Mobile Button Issue",description:"Debug using Chrome DevTools,DevTools checks for overlaping elements", deadline: "21 March 2025" },
+        { company: "CloudSync", title: "Add Dark Mode", description:"Store the user's preference in localStorage, update CSS variables dynamically", deadline: "25 March 2025" },
+        { company: "Swift Pay", title: "Optimize  Home page ",description:"Debug using Chrome DevTools,DevTools checks for overlaping element", deadline: "31 March 2025" },
+        { company: "Meta", title: "Add new emoji 🤲",description:"Debug using Chrome DevTools,DevTools checks for overlaping element", deadline: "21 March 2025" },
+        { company: "Google LLC", title: "Integrate OpenAI API ",description:"Debug using Chrome DevTools,DevTools checks for overlaping element", deadline: "01 April 2025" },
+        { company: "GlassDoor", title: "Improve Job searching ",description:"Store the user's preference in localStorage, update CSS variables dynamically", deadline: "05 May 2025" }
+    ];
+
+    const taskBox = document.getElementById('taskBox');
+    const taskCountElement = document.getElementById('task-count');
+    const logContent = document.getElementById('log-content');
+
+    function updateCounts() {
+        taskCountElement.textContent = taskCount;
+    }
+
+    function getCurrentTime() {
+        const now = new Date();
+        return now.toLocaleTimeString();
+    }
+    //the blogs part
+    function openblogsPage() {
+        window.location.href = "blogs.html";
+    }
+    //the theme colour
+    let colorIndex = 0;
+    const colors = ["#f8f9fc", "#d1c4e9", "#c8e6c9", "#ffccbc", "#bbdefb"];
+    function changeTheme() {
+        document.body.style.background = colors[colorIndex];
+        colorIndex = (colorIndex + 1) % colors.length;
+    }
+    //complete section part
+    tasks.forEach((task) => {
+        let taskCard = document.createElement('div');
+        taskCard.classList.add('task-card');
+        taskCard.innerHTML = `
+            <h3>${task.company}</h3>
+            <p>${task.title}</p>
+            <p>${task.description}</p>
+            <p><strong>Deadline:</strong> ${task.deadline}</p>
+            <button class="completed" onclick="markCompleted(this)">Completed</button>
+        `;
+        taskBox.appendChild(taskCard);
+    });
+
+    function markCompleted(button) {
+        if (!button.classList.contains('disabled')) {
+            button.classList.add('disabled');
+            button.textContent = "Completed";
+            button.style.background = "grey";
+            
+            const time = getCurrentTime();
+            alert("Board updated successfully");
+            taskCount--;
+            updateCounts();
+
+            let logEntry = document.createElement("p");
+            logEntry.textContent = `You have completed the task at ${time}`;
+            logContent.appendChild(logEntry);
+        }
+    }
+
+    function clearActivityLog() {
+        logContent.innerHTML = "";
+    }
+    </script>
 </body>
 </html>
