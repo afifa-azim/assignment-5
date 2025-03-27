@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fc;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 30px;
+            margin-right: 10px;
+        }
+        .back-button {
+            background: #675afc;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .heading{
+            align-items: center;
+        }
+        .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+        h2 {
+            color: #333;
+        }
+        .question {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo">
+            <span style="color: black; font-weight: bold;">Dev Board</span>
+        </div>
+        <button class="back-button" onclick="goBack()">Back to Desk</button>
+    </div>
+    <div class="quiz-container">
+        <h2 class="heading">Blogs</h2>
+        <div class="question">Question-1: What are the different ways to select an element in the DOM?
+            <br>
+            Ans:By getElementById,by className, by tagName etc. 
+        </div>
+        <br>
+        <br>
+        <div class="question">Question-2: What is the difference between innerHTML, innerText, and textContent?
+            <br>
+            Ans:innerHTML returns the HTML content inside an element, innerText returns the visible text as displayed in the browser, excluding hidden elements and textContent returns the text content of an element, including hidden text, but treats everything as plain text.
+        </div>
+        <br>
+        <br>
+        <div class="question">Question-3. What is event delegation in the DOM?
+            <br>
+            Ans: event delegation in the Dom is where single event listener is added to a parent element to handle events for multiple child elements. 
+        </div>
+        <br>
+        <br>
+
+        <div class="question">Question-4. What is event bubbling in the DOM?
+            Ans: event bubbling in the DOM works from the target element and finish at the root element.
+        </div>
+        <br>
+        <br>
+        
+        <div class="question">Question-5. How do you create, add, and remove elements using JavaScript?
+            Ans:  create a new element using the document.createElement() method. Once an element is created, we can insert it into the DOM using different methods like appendChild(). and we can remove an element using removeChild() or remove(). 
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "index.html"; 
+        }
+    </script>
+</body>
+</html>
